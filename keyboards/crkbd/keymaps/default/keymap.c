@@ -29,109 +29,37 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+-------------+------+------+------+------|
  * |   A  |   R  |   S  |   T  |   G  |   M  |   N  |   E  |   I  |   O  |
  * |------+------+------+------+------|------+------+------+------+------|
- * |   X  |   C  |   D  |   V  |   Z  |   K  |   H  |   ,  |   .  |   /  |
+ * |   X  |   C  |   D  |   V  |Alt(Z)|Alt(K)|   H  |   ,  |   .  |   /  |
  * |------+------+------+------+------+------+------+------+------+------|
- * |      |      |Adjust| Lower| Super|BSP(RA)| Func | |      |      |
+ * |    Super | Ctl (Esc) | Sft (Sp) | Sft (Bsp) | Ctl (Ent) | Layer     |
  * `---------------------------------------------------------------------'
  */
 [_COLEMAKDH] = LAYOUT_split_3x5_3(
 KC_Q,          KC_W,          KC_F,           KC_P,                   KC_B,                   KC_J,                  KC_L,                    KC_U,          KC_Y,          KC_SCLN,
-LGUI_T(KC_A),  LALT_T(KC_R),  LSFT_T(KC_S),   LCTL_T(KC_T),           KC_G,                   KC_M,                  RCTL_T(KC_N),            RSFT_T(KC_E),  RALT_T(KC_I),  RGUI_T(KC_O),
-KC_X,          KC_C,          KC_D,           KC_V,                   KC_Z,                   KC_K,                  KC_H,                    KC_COMMA,      KC_DOT,        KC_SLASH,
-                              OSL(_ADJUST),   LT(_LOWER, KC_ESCAPE),  LT(_SSUPER, KC_SPACE),   LT(_RAISE, KC_BSPC),  LT(_FUNCTION, KC_ENTER), OSL(_EXTRA)
+KC_A,          KC_R,          KC_S,           KC_T,                   KC_G,                   KC_M,                  KC_N,                    KC_E,          KC_I,          KC_O,
+KC_X,          KC_C,          KC_D,           KC_V,                   LALT_T(KC_Z),           RALT_T(KC_K),          KC_H,                    KC_COMMA,      KC_DOT,        KC_SLASH,
+                             KC_APP,          LCTL_T(KC_ESCAPE),      LSFT_T(KC_SPACE),      RSFT_T(KC_BSPC),        RCTL_T(KC_ENTER),        OSL(_LOWER)
 ),
 
 /* Lower
  * ,---------------------------------------------------------------------.
- * |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |      |      |
+ * |   F1 |   F2 |   F3 |   F4 |   F5 |   F6 |   F7 |   F8 |   F9 |  F10 |
  * |------+------+------+------+-------------+------+------+------+------|
  * |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |
  * |------+------+------+------+------|------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      |
+ * |  `   |   -  |   =  |   '  |      |      |  TAB |   [  |   ]  |   \  |
  * |------+------+------+------+------+------+------+------+------+------|
- * |      |      | BOOT |      |      |      |      |      |      |      |
+ * |      |      |      |      |      |      |      |      |      |      |
  * `---------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_split_3x5_3(
-KC_EXCLAIM,   KC_AT,       KC_HASH,     KC_DOLLAR,   KC_PERCENT,  KC_CIRCUMFLEX, KC_AMPERSAND,   KC_ASTERISK,  KC_TRNS,    KC_TRNS,
+KC_F1,        KC_F2,       KC_F3,       KC_F4,       KC_F5,       KC_F6,         KC_F7,          KC_F8,        KC_F9,      KC_F10,
 KC_1,         KC_2,        KC_3,        KC_4,        KC_5,        KC_6,          KC_7,           KC_8,         KC_9,       KC_0,
-KC_TRNS,      KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,       KC_TRNS,        KC_TRNS,      KC_TRNS,    KC_TRNS,
-                           QK_BOOT,     KC_TRNS,     KC_TRNS,     KC_TRNS,       KC_TRNS,        KC_TRNS
+KC_GRV,       KC_MINS,     KC_EQL,      KC_QUOT,     KC_TRNS,     KC_TRNS,       KC_TAB,         KC_LBRC,      KC_RBRC,    KC_BSLS,
+                           KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,       KC_TRNS,        KC_TRNS
 ),
 
-
-/* Raise (Symbol layer)
- * ,---------------------------------------------------------------------.
- * |  ~   |      |  {   |   }  |      |      |  _   |  -   |  |   |  \   |
- * |------+------+------+------+-------------+------+------+------+------|
- * |  `   |      |  (   |   )  |      |      |  =   |  +   |  '   |  "   |
- * |------+------+------+------+------|------+------+------+------+------|
- * |      |      |  [  |    ]  |      |      |      |      |      |      |
- * |------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      |
- * `---------------------------------------------------------------------'
- */
-
-[_RAISE] = LAYOUT_split_3x5_3(
-KC_TILDE,        KC_TRNS,      KC_LCBR,       KC_RCBR,       KC_TRNS,       KC_TRNS,      KC_UNDERSCORE,  KC_MINUS,      KC_PIPE,     KC_BACKSLASH,
-KC_GRAVE,        KC_TRNS,      KC_LPRN,       KC_RPRN,       KC_TRNS,       KC_TRNS,      KC_EQUAL,       KC_PLUS,       KC_QUOTE,    RSFT(KC_QUOTE),
-KC_TRNS,         KC_TRNS,      KC_LBRC,       KC_RBRC,       KC_TRNS,       KC_TRNS,      KC_TRNS,        KC_TRNS,       KC_TRNS,     KC_TRNS,
-                               KC_TRNS,       KC_TRNS,       KC_TRNS,       KC_TRNS,      KC_TRNS,        KC_TRNS
-),
-
-/* Function
- * ,---------------------------------------------------------------------.
- * | ESC  | TAB  |S-TAB |      |      |      | HOME | END  | PSCR | DEL  |
- * |------+------+------+------+-------------+------+------+------+------|
- * |ALT(1)|ALT(2)|ALT(3)|ALT(4)|ALT(5)| LEFT | DOWN |  UP  | RIGHT|      |
- * |------+------+------+------+------|------+------+------+------+------|
- * |ALT(6)|ALT(7)|ALT(8)|ALT(9)|ALT(0)|      |      |      |      |      |
- * |------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      | BOOT |      |      |
- * `---------------------------------------------------------------------'
- */
-[_FUNCTION] = LAYOUT_split_3x5_3(
-KC_ESCAPE,    KC_TAB,          RSFT(KC_TAB), KC_TRNS,     KC_TRNS,       KC_TRNS,      KC_HOME,      KC_END,       KC_PSCR,      KC_DEL,
-LALT(KC_1),   LALT(KC_2),      LALT(KC_3),   LALT(KC_4),  LALT(KC_5),    KC_LEFT,      KC_DOWN,      KC_UP,        KC_RIGHT,     KC_TRNS,
-LALT(KC_6),   LALT(KC_7),      LALT(KC_8),   LALT(KC_9),  LALT(KC_0),    KC_TRNS,      KC_TRNS,      KC_TRNS,      KC_TRNS,      KC_TRNS,
-                               KC_TRNS,      KC_TRNS,     KC_TRNS,       KC_TRNS,      KC_TRNS,      QK_BOOT
-),
-
-/* SSuper
- * ,---------------------------------------------------------------------.
- * |      |      |      |      |      |      |      |      |      |      |
- * |------+------+------+------+-------------+------+------+------+------|
- * |GUI(1)|GUI(2)|GUI(3)|GUI(4)|GUI(5)|      |      |      |      |      |
- * |------+------+------+------+------|------+------+------+------+------|
- * |GUI(6)|GUI(7)|GUI(8)|GUI(9)|GUI(0)|      |      |      |      |      |
- * |------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      |
- * `---------------------------------------------------------------------'
- */
-[_SSUPER] = LAYOUT_split_3x5_3(
-LGUI(KC_Q),   LGUI(KC_W),  LGUI(KC_E),  LGUI(KC_R),  LGUI(KC_T),    LGUI(KC_Y),   LGUI(KC_U),   LGUI(KC_I),     LGUI(KC_O),    LGUI(KC_P),
-LGUI(KC_1),   LGUI(KC_2),  LGUI(KC_3),  LGUI(KC_4),  LGUI(KC_5),    LGUI(KC_H),   LGUI(KC_J),   LGUI(KC_K),     LGUI(KC_L),    LGUI(KC_SEMICOLON),
-LGUI(KC_6),   LGUI(KC_7),  LGUI(KC_8),  LGUI(KC_9),  LGUI(KC_0),    LGUI(KC_N),   LGUI(KC_M),   LGUI(KC_COMMA), LGUI(KC_DOT),  LGUI(KC_SLASH),
-                           KC_TRNS,     KC_TRNS,     KC_TRNS,       KC_TRNS,      KC_TRNS,      KC_TRNS
-),
-
-/* Adjust
- * ,---------------------------------------------------------------------.
- * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  | F10  |
- * |------+------+------+------+-------------+------+------+------+------|
- * | MUTE | Vol- | Vol+ | Bri- | Bri+ |      |      |      |      |      |
- * |------+------+------+------+------|------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      |
- * |------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      |
- * `---------------------------------------------------------------------'
- */
-[_ADJUST] = LAYOUT_split_3x5_3(
-KC_F1,        KC_F2,              KC_F3,           KC_F4,                 KC_F5,             KC_F6,        KC_F7,        KC_F8,        KC_F9,        KC_F10,
-KC_KB_MUTE,   KC_KB_VOLUME_DOWN,  KC_KB_VOLUME_UP, KC_BRIGHTNESS_DOWN,    KC_BRIGHTNESS_UP,  KC_TRNS,      KC_TRNS,      KC_TRNS,      KC_TRNS,      KC_TRNS,
-KC_TRNS,      KC_TRNS,            KC_TRNS,         KC_TRNS,               KC_TRNS,           KC_TRNS,      KC_TRNS,      KC_TRNS,      KC_TRNS,      KC_TRNS,
-                                  KC_TRNS,         KC_TRNS,               KC_TRNS,           KC_TRNS,      KC_TRNS,      KC_TRNS
-),
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
